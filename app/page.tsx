@@ -125,7 +125,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col h-screen max-w-5xl mx-auto p-4 bg-gray-50 dark:bg-gray-900">
+    <main className="flex flex-col h-[calc(100vh-84px)] max-w-5xl mx-auto p-4 bg-gray-50 dark:bg-gray-950">
       <div
         ref={chatContainerRef}
         className="flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600"

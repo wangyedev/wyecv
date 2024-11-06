@@ -1,8 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RAG Chatbot with Next.js
+
+A Retrieval-Augmented Generation (RAG) chatbot built with Next.js, featuring real-time streaming responses and persistent chat history.
+
+🔗 **[Try it live on wyecv.uk](https://wyecv.uk)**
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org) - React framework
+- [OpenAI](https://openai.com) - For chat completions and embeddings
+- [Pinecone](https://www.pinecone.io) - Vector database for RAG implementation
+- [MongoDB](https://www.mongodb.com) - Chat session storage
+- Server-Sent Events (SSE) - Real-time response streaming
+
+## Features
+
+- Real-time streaming chat responses
+- Persistent chat history across sessions
+- RAG implementation for context-aware responses
+- Responsive UI with message bubbles
+- Loading states and animations
+- Session management
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Set up environment variables in `.env.local`:
+
+```env
+MONGODB_URI=your_mongodb_uri
+OPENAI_API_KEY=your_openai_api_key
+PINECONE_API_KEY=your_pinecone_api_key
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
@@ -10,27 +50,32 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the chatbot.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/page.tsx` - Main chat interface
+- `app/api/chat/route.ts` - Chat API endpoint with streaming responses
+- `app/api/history/route.ts` - Chat history API endpoint
+- `app/lib/mongodb.ts` - MongoDB connection configuration
+- `app/types/chat.ts` - TypeScript interfaces for chat functionality
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+The following environment variables are required:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `MONGODB_URI` - Your MongoDB connection string
+- `OPENAI_API_KEY` - Your OpenAI API key
+- `PINECONE_API_KEY` - Your Pinecone API key
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+This application can be deployed on [Vercel](https://vercel.com) or any other platform that supports Next.js applications.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Make sure to configure the environment variables in your deployment platform's settings.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+[MIT License](LICENSE)

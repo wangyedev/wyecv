@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider, ModeToggle } from "./components/ui/theme";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,8 +30,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
-        <Analytics />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <nav className="max-w-5xl mx-auto flex justify-between items-center py-4">
+            <h1 className="text-2xl font-bold">RAG Chatbot</h1>
+            <ModeToggle />
+          </nav>
+
+          {children}
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

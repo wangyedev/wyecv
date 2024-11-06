@@ -3,6 +3,8 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import type { Message } from "./types/chat";
+import { Button } from "./components/ui/button";
+import { Input } from "./components/ui/input";
 
 export default function Home() {
   const [message, setMessage] = useState("");
@@ -123,79 +125,70 @@ export default function Home() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-4 min-h-screen flex flex-col">
-      <h1 className="text-2xl font-bold mb-4">RAG Chatbot</h1>
-
+    <main className="flex flex-col h-screen max-w-5xl mx-auto p-4 bg-gray-50 dark:bg-gray-900">
       <div
         ref={chatContainerRef}
-        className="flex-1 mb-4 overflow-y-auto border rounded p-4 bg-gray-50"
-        style={{ minHeight: "500px" }}
+        className="flex-1 overflow-y-auto space-y-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600"
       >
         {chatHistory.map((msg, index) => (
           <div
             key={index}
-            className={`mb-4 max-w-[80%] ${
-              msg.role === "user" ? "ml-auto" : "mr-auto"
+            className={`flex ${
+              msg.role === "user" ? "justify-end" : "justify-start"
             }`}
           >
             <div
-              className={`p-3 rounded-lg ${
+              className={`max-w-[80%] rounded-2xl px-4 py-3 shadow-sm ${
                 msg.role === "user"
-                  ? "bg-blue-500 text-white"
-                  : "bg-white border border-gray-200"
+                  ? "bg-blue-600 text-white rounded-br-sm"
+                  : "bg-white dark:bg-gray-800 dark:text-gray-100 rounded-bl-sm"
               }`}
             >
-              <p>{msg.content}</p>
+              {msg.content}
             </div>
-            <p className="text-xs text-gray-500 mt-1">
-              {msg.role === "user" ? "You" : "Assistant"} •
-              {new Date(msg.timestamp).toLocaleTimeString()}
-            </p>
           </div>
         ))}
 
         {currentStreamingMessage && (
-          <div className="mb-4 max-w-[80%] mr-auto">
-            <div className="p-3 rounded-lg bg-white border border-gray-200">
-              <p>{currentStreamingMessage}</p>
+          <div className="flex justify-start">
+            <div className="max-w-[80%] rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm bg-white dark:bg-gray-800 dark:text-gray-100">
+              {currentStreamingMessage}
             </div>
-            <p className="text-xs text-gray-500 mt-1">
-              Assistant • {new Date().toLocaleTimeString()}
-            </p>
           </div>
         )}
 
         {loading && !currentStreamingMessage && (
-          <div className="flex items-center space-x-2 text-gray-500">
-            <div className="animate-bounce">●</div>
-            <div className="animate-bounce delay-100">●</div>
-            <div className="animate-bounce delay-200">●</div>
+          <div className="flex justify-start">
+            <div className="max-w-[80%] rounded-2xl rounded-bl-sm px-4 py-3 bg-white dark:bg-gray-800">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce"></div>
+                <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce delay-100"></div>
+                <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce delay-200"></div>
+              </div>
+            </div>
           </div>
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="flex space-x-2">
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="flex-1 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Type your message..."
-          disabled={loading}
-        />
-
-        <button
-          type="submit"
-          disabled={loading || !message.trim()}
-          className={`px-4 py-2 rounded font-medium ${
-            loading || !message.trim()
-              ? "bg-gray-300 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-600 text-white"
-          }`}
-        >
-          {loading ? "Sending..." : "Send"}
-        </button>
-      </form>
-    </div>
+      <div className="mt-4">
+        <form onSubmit={handleSubmit} className="flex space-x-2">
+          <Input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Type a message..."
+            disabled={loading}
+            className="flex-1 rounded-full border-gray-200 dark:border-gray-700 focus:border-blue-500 dark:focus:border-blue-500 shadow-sm"
+          />
+          <Button
+            type="submit"
+            disabled={loading || !message.trim()}
+            className="rounded-full px-6 bg-blue-600 hover:bg-blue-700 text-white shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {loading ? "Sending..." : "Send"}
+          </Button>
+        </form>
+      </div>
+    </main>
   );
 }

@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "wyecv",
+  title: "The third wave",
   description: "The personal website for Ye",
 };
 

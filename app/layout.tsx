@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Wang Ye - Full Stack Developer",
   description:
-    "A full-stack engineer specializing in AI-powered applications and React ecosystem.",
+    "Senior Software Engineer at Red Hat with 5 years of full-stack development experience, specializing in AI-powered applications.",
   keywords: [
     "Full Stack Developer",
     "AI Agent",

@@ -32,4 +32,12 @@ html {
   .underline-link {
     @apply underline underline-offset-4 decoration-1 hover:decoration-2 transition-all duration-200;
   }
+  
+  .wavy-underline {
+    text-decoration: underline;
+    text-decoration-color: #fbbf24;
+    text-decoration-style: wavy;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+  }
 } 

@@ -13,9 +13,17 @@ export default function MainContent() {
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-700 dark:text-white/80 font-light leading-relaxed max-w-3xl mx-auto">
-            A full-stack engineer specializing in AI-powered applications and
-            the web development ecosystem. I create intelligent, scalable
-            solutions that bridge cutting-edge AI with robust web development.
+            Senior Software Engineer at{" "}
+            <a
+              href="https://www.redhat.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="wavy-underline text-slate-700 dark:text-white/80 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
+            >
+              Red Hat
+            </a>{" "}
+            with 5 years of full-stack development experience. I specialize in
+            AI-powered applications and modern web technologies.
           </p>
 
           <p className="text-lg text-slate-600 dark:text-white/70 max-w-2xl mx-auto">
@@ -23,6 +31,17 @@ export default function MainContent() {
             applications. I help businesses automate workflows and enhance user
             experiences through intelligent systems.
           </p>
+        </div>
+
+        {/* Email Button */}
+        <div className="mt-12">
+          <a
+            href="mailto:wangyecv@gmail.com"
+            className="inline-flex items-center space-x-2 bg-gold-500 hover:bg-gold-600 text-black font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+          >
+            <Mail size={18} />
+            <span>Get In Touch</span>
+          </a>
         </div>
 
         {/* Social Links */}

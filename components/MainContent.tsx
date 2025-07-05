@@ -14,8 +14,8 @@ export default function MainContent() {
 
           <p className="text-xl md:text-2xl text-slate-700 dark:text-white/80 font-light leading-relaxed max-w-3xl mx-auto">
             A full-stack engineer specializing in AI-powered applications and
-            the React ecosystem. I create intelligent, scalable solutions that
-            bridge cutting-edge AI with robust web development.
+            the web development ecosystem. I create intelligent, scalable
+            solutions that bridge cutting-edge AI with robust web development.
           </p>
 
           <p className="text-lg text-slate-600 dark:text-white/70 max-w-2xl mx-auto">
